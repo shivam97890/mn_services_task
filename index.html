@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Page Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="myCtrl as vm">
+   <div class="container">
+       
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Forms</th>
+                        <th>Add</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.list">
+                        <td>{{item.name}}</td>
+                        <td>
+                            <input type="checkbox" ng-click="item.add=item.add==0?1:0" ng-checked="item.add">
+                        </td>
+                        <td>
+                            <input type="checkbox" ng-click="item.view=item.view==0?1:0" ng-checked="item.view">
+                        </td>
+                        <td>
+                            <input type="checkbox" ng-click="item.edit=item.edit==0?1:0" ng-checked="item.edit">
+                        </td>
+                        <td>
+                            <input type="checkbox" ng-click="item.delete=item.delete==0?1:0" ng-checked="item.delete">
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" style="float:right" ng-click="vm.submited(vm.list)">Submit</button>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Forms</th>
+                        <th>Add</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.selectedList">
+                        <td>{{item.name}}</td>
+                        <td><span ng-show="item.add==false">
+                                0
+                            </span><span ng-show="item.add==true">
+                                1
+                            </span></td>
+                        <td><span ng-show="item.view==false">
+                                0
+                            </span><span ng-show="item.view==true">
+                                1
+                            </span></td>
+                        <td><span ng-show="item.edit==false">
+                                0
+                            </span><span ng-show="item.edit==true">
+                                1
+                            </span></td>
+                        <td>
+                            <span ng-show="item.delete==false">
+                                0
+                            </span><span ng-show="item.delete==true">
+                                1
+                            </span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
